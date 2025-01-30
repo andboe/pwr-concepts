@@ -1,0 +1,134 @@
+= Technical writing at {company}
+:author: Andreas Böttcher
+:email: andreas.boettcher@peopleware.com
+:docdate:
+:company: Peopleware
+:product: Peopleware WFM
+:docs-product: Help Center
+
+== Introduction
+
+Tech Writing at {company} currently encompasses, among other things, the following tasks:
+
+* Create, review, maintain and update end-user documentation for the {product} product suite
+* Create, review, maintain and update translations from English for the following text types into 5 target languages:
+** Help Center articles
+** UI strings
+** Marketing material
+** Customer communication material
+* Maintain authoring guidelines and style guides
+* Manage and maintain Jekyll SSG
+
+In this document, I will outline why I think the processes and tools we currently use to serve these tasks are no longer up to the task, affecting our readiness to provide timely, high-quality documentation and translations.
+I will outline an ecosystem of tools and the respective processes to tackle this.
+The goal is to achieve a state where the Technical Writing department can fulfill all their tasks efficiently, with high quality and at scale.
+
+[NOTE]
+====
+I'll refer to the Technical Writing team simply as the *docs team* in the rest of this document.
+====
+
+== Status Quo
+
+==== Tech stack
+
+The Technical Writing tech stack is currently made up of the following tools:
+
+* Git/Github (Version Control, Issue Tracking, Reviews)
+* Jekyll (Static Site Generator)
+* Customized Markdown (Markup and Formatting)
+* Github actions/Jenkins/AWS S3 (Build/Deployment/Hosting)
+* Customized Lunr (Help Center Search)
+* Prettier (Markdown Linter)
+* Google Analytics (Analytics)
+* Any editor or IDE with a personal choice of plugins
+
+The translation tech stack looks as follows:
+
+* Git/Github (Version Control, Issue Tracking, Reviews, Automation)
+* A collection of scripts and interfaces that:
+** Triggers the translation process
+** Identifies translation units in our customized Markdown
+** Searches for target language equivalents for translation units in translation memory (TM) files
+** Sends remaining translation units to DeepL and ChatGPT for translation
+** Performs segment alignment for source and target language articles
+** Extracts source and target language text segments from these articles
+** Saves bilingual segment pairs in corresponding translation memory (TM) files
+** Detects conflicting/duplicate target language strings per for a given source text string
+
+=== Processes
+
+A core task of the tech writing team is to create, maintain and improve end-user documentation for {product}.
+Related documentation tasks usually emerge in one of the following ways:
+
+* Informal communication, such as Slack messages, e.g. by support, devs or PMs
+* Mentions in issues (mainly from injixo repo)
+* Active monitoring of cycle project boards for docs-relevant enhancements
+* PRs created by non tech writing staff
+* PRs created by automated process steps
+* Invites to closing meetings
+//TODO how else?
+
+Documentation tasks that are recorded in a Github issue are tracked on a dedicated tech writing board.
+// TODO -> continue here
+
+=== Challenges and Pain Points
+
+== Translation
+
+=== Tech stack
+
+=== Processes
+
+Despite efforts to automate the translation process, translation still takes up an undue amount of tech writing capacity.
+This will eventually impact our readiness to create timely, high-quality end-user documentation.
+Translation process automation is an indispensable part of any modern translation workflow.
+This includes both process step automation as well as employing neural machine translation and LLM capabilities.
+Making the most of these capabilities requires careful planning, proper translation data management and robust language QA.
+In this document I explain why I think the current localisation approach is flawed, not future-proof and uneconomical in the long run.
+
+I think our current translation strategy will not yield the desired results and that process and tool adjustments are necessary to ensure tech writing capacity is
+Challenges and Pain Points
+
+=== Challenges and Pain Points
+
+I don't think it will be possible to omit post-editing from our l10n workflows for the foreseeable future.
+Let me explain why:
+...
+
+// ridiculous "overhead-to-actual-translation-work" ratio. we fuck around with translation PRs, TM-generation PRs, what is basically MANUAL file AND line AND string matching in github for these PRs for every documentation PR, no matter how small. this is ridiculous. We spend 5 times more on tracking, reviewing, fixing, approving and aligning about the PRs than we would doing actual translation work. Just fixing a fucking typo somewhere currently generates 11 (!!!!) PRs, all of which need to be reviewed and fixed manually.
+
+
+
+
+
+
+
+As company strongly tied to international markets, InVision needs robust internationalization (i18n) and localization (l10n) strategies to ensure content is delivered in all relevant locales:
+On time
+With the required quality
+Cost-efficiently
+To that end, a new localization strategy was started mid-2024. The goal of that strategy is to achieve fully automate the translation process
+
+
+
+
+
+
+NOTES:
+
+* TM granularity: reduce segment size to reduce effects of changes in source material to target (ex: adding a comma triggers retranslation of a full paragraph)
+
+* Missing from the tech writing tech stack:
+** Authoring support:
+*** Spell checker
+*** Grammar checker
+*** Prose linter
+*** On-the-fly link checker
+*** Auto-complete
+
+* Generally, tasks for modern translation workflows have “shifted left”. MT/LLM can support linguists in the actual translation generation phase, which allows them to focus more on data tasks such as ensuring clean TMs, meta data application, process improvement etc
+
+* The whole tool stack and process setup is
+
+
