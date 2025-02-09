@@ -129,8 +129,54 @@ Migration tools such as Pandoc can convert from and to well-defined formats out-
 
 ===== Tables
 
-Handling more than the most basic tables in Markdown is essentially impossible without employing additional tools to handle formatting.
-//TODO continue here, explain further why md tables suck: PITA to set up, no sophisticated formatting support
+Handling more than the most basic tables in Markdown is extremely tedious.
+Since the syntax tries to emulate an actual, rendered table, making even small changes in an individual cell potentially requires changing _every other cell_ in that column.
+
+.Table before edit
+[%linenums,markdown]
+----
+| Item     | Quantity | Price |
+|----------|----------|-------|
+| Apple    | 5        | 2.5   |
+| Banana   | 12       | 1.99  |
+| Orange   | 8        | 3.25  |
+----
+
+.Editing cell content in line 5
+[%linenums,markdown,highlight=5]
+----
+| Item     | Quantity | Price |
+|----------|----------|-------|
+| Apple    | 5        | 2.5   |
+| Banana   | 12       | 1.99  |
+| Watermelon | 8        | 3.25  |
+----
+
+.Pad all others cells in column 1 to adjust width
+[%linenums,markdown,,highlight=1..4]
+----
+| Item       | Quantity | Price |
+|------------|----------|-------|
+| Apple      | 5        | 2.5   |
+| Banana     | 12       | 1.99  |
+| Watermelon | 8        | 3.25  |
+----
+
+This is basically unmanageable without additional tools and results in Git diff bloat that makes editorial reviews extremely inefficient and error-prone.
+
+The table syntax itself is also fairly limited.
+
+* You can't add content such as lists or admonitions.
+* Any long-form content basically breaks the table layout.
+* Line breaks, if they are supported at all, require HTML syntax or other workarounds.
+* Alignment options are limited and again trigger changes to every line of the table.
+* Formatting must be applied on a per-cell-basis.
+* etc.
+
+
+
+
+//TODO
 
 
 
@@ -170,8 +216,6 @@ Handling more than the most basic tables in Markdown is essentially impossible w
 
 
 == Translation
-
-=== Tech stack
 
 === Processes
 
