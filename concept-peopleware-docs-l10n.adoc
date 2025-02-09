@@ -54,12 +54,11 @@ The translation tech stack looks as follows:
 ** Performs segment alignment for source and target language articles
 ** Extracts source and target language text segments from these articles
 ** Saves bilingual segment pairs in corresponding translation memory (TM) files
-** Detects conflicting/duplicate target language strings per for a given source text string
+** Detects conflicting/duplicate target language strings per target locale for a given source text string
 
 === Processes
 
-A core task of the tech writing team is to create, maintain and improve end-user documentation for {product}.
-Related documentation tasks usually emerge in one of the following ways:
+Documentation and translation tasks usually emerge in one of the following ways:
 
 * Informal communication, such as Slack messages, e.g. by support, devs or PMs
 * Mentions in issues (mainly from injixo repo)
@@ -69,14 +68,83 @@ Related documentation tasks usually emerge in one of the following ways:
 * Invites to closing meetings
 //TODO how else?
 
-Documentation tasks that are recorded in a Github issue are tracked on a dedicated tech writing board.
-// TODO -> continue here
+Tasks that are recorded in a Github issue are tracked on a dedicated tech writing board.
+Changes and requests only available as PRs are not tracked on the board. For bigger tasks, we try to create an accompanying issue in the help-center repo.
 
-=== Challenges and Pain Points
+== Challenges and Pain Points
+
+== Documentation
+
+=== Markdown
+
+The fundamental appeal of Markdown lies in its simplicity and ubiquity.
+It's everywhere and it's easy to learn.
+However, Markdown has a number of drawbacks, especially for large-scale, complex projects like Help Center.
+
+==== Flavors and customization
+Markdown comes in upwards of 15 flavors.
+At Peopleware, we use Github Flavored Markdown, which we customized further to meet our requirements.
+Examples for these customizations are:
+
+* Section anchors
+* Link tags
+* CSS role tags
+** .label
+** .button
+** .breadcrumbs
+** .id-label
+** .menu-item
+* Image tags
+* Icon tags
+
+Having not _one_ but many Markdown flavors complicates tasks such as:
+
+* content migration
+* content re-use
+* content variants
+* structured formatting
+* automated processing
+* implementing complex elements (diagrams, math, metadata)
+
+Committing to one flavor and customizing it also carries the danger of generating a lock-in effect.
+Upstream and downstream processes are tailored to meet the requirements of that particular Markdown implementation, making it harder to exchange individual components of the process or tool landscape.
+
+.
+====
+Switching from Jekyll to another static-site generator requires migrating the Jekyll-optimized Markdown content to a language or Markdown flavor supported by the new SSG.
+Migration tools such as Pandoc can convert from and to well-defined formats out-of-the-box or with little configuration overhead. Such tools would however require extensive configuration and readjustment for customized Markdown.
+====
+
+.Customization of translation prompt
+====
+ddd
+====
+
+As a result, all concessions and specializations implemented in such a process to cater to that specific Markdown flavor
+
+
+
+[%header, cols="3,3,3"]
+|===
+| Feature
+| Markdown
+| AsciiDoc
+
+
+|
+|
+|
+
+|
+|
+|===
+
+
+
+
 
 == Translation
 
-=== Tech stack
 
 === Processes
 
