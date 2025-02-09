@@ -1,0 +1,56 @@
+[source, markdown]
+----
+--- <.>
+title: Default roles
+description: Learn about the access rights of default roles.
+toc: true
+product_label:
+  - essential
+  - advanced
+  - enterprise
+  - classic
+redirect_from:
+  - /user-roles-in-detail/
+redirect_reason: Updated filename on 05 December 2022
+---
+
+## Default roles <a name="default-roles"></a> <.>
+
+We provide six default roles with pre-defined access rights.
+You can customize the default roles and/or {% link_new add your own roles | features/account/configure-user-roles.md %}. <.>
+
+The tables in this article list apps and features for relevant default roles.
+The green checkmark icon <i class="icon-check" style="color:#1cb396"></i> indicates full (read and write) access. <.>
+Because your WFM plan determines the available features, you may not have access to every item listed.
+
+[...]
+
+## Access to account, user, and integration-related information <a name="access-to-account-user-and-integration-related-information"></a>
+
+Click _Account_{:.menu-item} in the main navigation to access the features below. <.>
+
+<div class="table__wrapper table__with-subsections" markdown="1"> <.>
+
+|                    |         Admin          |        Planner         |        Finance         |
+| ------------------ | :--------------------: | :--------------------: | :--------------------: |
+| **Account**        |                        |                        |                        |
+| **User**           | <i class="icon-check"> |                        |                        |
+| **Roles**          | <i class="icon-check"> |                        |                        |
+| **Billing**        |                        |                        |                        |
+| Subscription       | <i class="icon-check"> |                        | <i class="icon-check"> |
+| **Administration** |                        |                        |                        |
+| Company Details    | <i class="icon-check"> |                        |                        |
+| **Integrations**   | <i class="icon-check"> | <i class="icon-check"> |                        |
+
+</div>
+
+----
+
+<.> Start of the Front Matter block.
+By definition, Front Matter is an extension of a Markdown spec.
+It's tailored to a specific site generator, Jekyll in our case.
+<.> An HTML attribute that IDs a document section. Jekyll uses that attribute as an anchor for intra-document links.
+<.> A custom link tag, introduced to enable fallback mechanisms for missing locale files
+<.> A custom icon tag that references an item in the Help Center icon library. This example also specifies additional style information.
+<.> A custom tag to identify Help Center text that represents a menu item.
+<.> A special table format, which uses an additional wrapper div to enable additional formatting and output options.

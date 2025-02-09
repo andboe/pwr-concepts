@@ -49,12 +49,14 @@ The translation tech stack looks as follows:
 * A collection of scripts and interfaces that:
 ** Triggers the translation process
 ** Identifies translation units in our customized Markdown
-** Searches for target language equivalents for translation units in translation memory (TM) files
+** Searches for target language equivalents for translation units in translation memory +(TM)+ files
+** Strips all markup from source language files
 ** Sends remaining translation units to DeepL and ChatGPT for translation
+** Re-inserts all markup from source language files
 ** Performs segment alignment for source and target language articles
 ** Extracts source and target language text segments from these articles
 ** Saves bilingual segment pairs in corresponding translation memory (TM) files
-** Detects conflicting/duplicate target language strings per target locale for a given source text string
+** Detects conflicting/duplicate target language strings per locale for a given source text string
 
 === Processes
 
@@ -73,54 +75,78 @@ Changes and requests only available as PRs are not tracked on the board. For big
 
 == Challenges and Pain Points
 
-== Documentation
+=== Documentation
 
-=== Markdown
+==== Markdown
 
-The fundamental appeal of Markdown lies in its simplicity and ubiquity.
-It's everywhere and it's easy to learn.
+The fundamental appeal of Markdown lies in its simplicity and ubiquity:
+It's everywhere, it's easy to learn and newcomers can get to writing right away--at least in theory.
 However, Markdown has a number of drawbacks, especially for large-scale, complex projects like Help Center.
 
-==== Flavors and customization
-Markdown comes in upwards of 15 flavors.
-At Peopleware, we use Github Flavored Markdown, which we customized further to meet our requirements.
+===== Flavors and customization
+Markdown comes in upwards of 15 flavors, negating much of its touted simplicity.
+While many Markdown features are shared across flavors on a superficial level, they may differ when it comes to the details.
+For example, while tables are generally supported, more sophisticated table features such as cell content alignment, captions, row and column spanning may or may not be supported based on the flavor.
+
+Having not _one_ but many Markdown flavors complicates tasks such as:
+
+* Migrating content
+* Reusing content
+* Creating and managing docs variants
+* Applying structured formatting
+* Establishing automated content processing
+* Implementing and maintaining complex elements (diagrams, math, metadata)
+
+At Peopleware, we use Github Flavored Markdown, which we customized further to meet our requirements and the requirements of our site generator Jekyll.
 Examples for these customizations are:
 
 * Section anchors
 * Link tags
 * CSS role tags
-** .label
-** .button
-** .breadcrumbs
-** .id-label
-** .menu-item
+** `.label`
+** `.button`
+** `.breadcrumbs`
+** `.id-label`
+** `.menu-item`
 * Image tags
 * Icon tags
+* `<div>` wrappers
 
-Having not _one_ but many Markdown flavors complicates tasks such as:
-
-* content migration
-* content re-use
-* content variants
-* structured formatting
-* automated processing
-* implementing complex elements (diagrams, math, metadata)
+.Some Markdown customization used in Help Center
+[%collapsible]
+====
+include::examples/md-customization.adoc[]
+====
 
 Committing to one flavor and customizing it also carries the danger of generating a lock-in effect.
-Upstream and downstream processes are tailored to meet the requirements of that particular Markdown implementation, making it harder to exchange individual components of the process or tool landscape.
+Upstream and downstream processes and tools are tailored to meet the requirements of that particular Markdown implementation, making it harder to exchange individual components of the process or tool landscape.
 
-.
+.Migration effort
 ====
-Switching from Jekyll to another static-site generator requires migrating the Jekyll-optimized Markdown content to a language or Markdown flavor supported by the new SSG.
+Switching from Jekyll to another static-site generator (SSG) requires migrating the Jekyll-optimized Markdown content to a language or Markdown flavor supported by the new SSG.
 Migration tools such as Pandoc can convert from and to well-defined formats out-of-the-box or with little configuration overhead. Such tools would however require extensive configuration and readjustment for customized Markdown.
 ====
 
-.Customization of translation prompt
-====
-ddd
-====
+===== Tables
 
-As a result, all concessions and specializations implemented in such a process to cater to that specific Markdown flavor
+Handling more than the most basic tables in Markdown is essentially impossible without employing additional tools to handle formatting.
+//TODO continue here, explain further why md tables suck: PITA to set up, no sophisticated formatting support
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -145,6 +171,7 @@ As a result, all concessions and specializations implemented in such a process t
 
 == Translation
 
+=== Tech stack
 
 === Processes
 
