@@ -1,0 +1,103 @@
+= Markdown
+
+The fundamental appeal of Markdown lies in its simplicity and ubiquity:
+It's everywhere, it's easy to learn and newcomers can get to writing right away--at least in theory.
+However, Markdown has a number of drawbacks, especially for large-scale, complex projects like Help Center.
+
+== Flavors and customization
+Markdown comes in upwards of 15 flavors, negating much of its touted simplicity.
+While many Markdown features are shared across flavors on a superficial level, they may differ when it comes to the details.
+For example, while tables are generally supported, more sophisticated table features such as cell content alignment, captions, row and column spanning may or may not be supported based on the flavor or may need HTML workarounds.
+
+Having not _one_ but many Markdown flavors complicates tasks such as:
+
+* Migrating content
+* Reusing content
+* Creating and managing docs variants
+* Applying structured formatting
+* Establishing automated content processing
+* Implementing and maintaining complex elements (diagrams, math, metadata)
+
+At Peopleware, we use Github Flavored Markdown, which we customized further to meet our requirements and the requirements of our site generator Jekyll.
+Examples for these customizations are:
+
+* Section anchors
+* Link tags
+* CSS role tags
+** `.label`
+** `.button`
+** `.breadcrumbs`
+** `.id-label`
+** `.menu-item`
+* Image tags
+* Icon tags
+* `<div>` wrappers
+
+.Some Markdown customization used in Help Center
+[%collapsible]
+====
+include::examples/md-customization.adoc[]
+====
+
+Committing to one flavor and customizing it also carries the danger of generating a lock-in effect.
+Upstream and downstream processes and tools are tailored to meet the requirements of that particular Markdown implementation, making it harder to exchange individual components of the process or tool landscape.
+
+.Migration effort
+====
+Switching from Jekyll to another static-site generator (SSG) requires migrating the Jekyll-optimized Markdown content to a language or Markdown flavor supported by the new SSG.
+Migration tools such as Pandoc can convert from and to well-defined formats out-of-the-box or with little configuration overhead. Such tools would however require extensive configuration and readjustment for customized Markdown.
+====
+
+== Tables
+
+Handling more than the most basic tables in Markdown is extremely tedious.
+Since the syntax tries to emulate an actual, rendered table, making even small changes in an individual cell potentially requires changing _every other cell_ in that column.
+
+.Table before edit
+[%linenums,markdown]
+----
+| Item     | Quantity | Price |
+|----------|----------|-------|
+| Apple    | 5        | 2.5   |
+| Banana   | 12       | 1.99  |
+| Orange   | 8        | 3.25  |
+----
+
+.Editing cell content in line 5
+[%linenums,markdown,highlight=5]
+----
+| Item     | Quantity | Price |
+|----------|----------|-------|
+| Apple    | 5        | 2.5   |
+| Banana   | 12       | 1.99  |
+| Watermelon | 8        | 3.25  |
+----
+
+.Pad all others cells in column 1 to adjust width
+[%linenums,markdown,highlight=1..4]
+----
+| Item       | Quantity | Price |
+|------------|----------|-------|
+| Apple      | 5        | 2.5   |
+| Banana     | 12       | 1.99  |
+| Watermelon | 8        | 3.25  |
+----
+
+This is basically unmanageable without additional tools and results in Git diff bloat that makes editorial reviews extremely inefficient and error-prone.
+
+The table syntax itself is also fairly limited.
+
+* Markdown tables do not support more complex content markup such as lists or admonitions.
+* Any long-form content basically breaks the table layout.
+* Line breaks, if they are supported at all, require HTML or other workarounds.
+* Alignment options are limited and trigger changes to every line of the table.
+* Content formatting must be applied on a per-cell-basis.
+* etc.
+
+== Cross-references
+
+Link management for resources within a Markdown project is based on absolute or relative paths.
+As a result, link handling in Markdown is usually a high-maintenance task, error-prone and requires elaborate tooling and configuration.
+Moving a document to a new directory means manually adjusting links or running dedicated tools purpose built for the Markdown/SSG implementation.
+
+Using file paths to point to resources also complicates modularization, content re-use and portability efforts in documentation projects.

@@ -1,0 +1,65 @@
+= Project management
+
+Identifying, prioritizing and scheduling tasks is a constant battle for the docs team.
+
+== Technical Writing board
+
+We try to track GitHub issues, which represent tasks, on the https://github.com/orgs/ivx/projects/48[Technical Writing board].
+There, issues go through various stages from _Backlog_ to _Done_.
+
+Issues usually come from the https://github.com/ivx/help-center[Help Center] and https://github.com/ivx/injixo[injixo] repos.
+
+While this sounds like a solid approach in theory, applicability in practice is poor.
+Let's have a closer look at why that is.
+
+=== Enhancement issues
+
+We do not have dependable workflows in place to govern how a responsible party triggers a documentation task for an enhancement.
+The docs team usually learns about an enhancement by being invited to the closing meeting, by proactively monitoring the enhancements board or through heads-ups by devs or PMs.
+The documentation phase usually follows the conclusion of an enhancement--classic waterfall.
+This has a number of consequences:
+
+. Enhancements are usually closed and completed when docs work begins. The enhancement issue has reached the end of its lifecycle, yet is still very much unfinished from a docs perspective.
+. The docs team processes in its board a closed issue. This isn't just counterintuitive, it has workflow and transparency implications.
+. Depending on how soon after a close an enhancement is shipped, docs may not be ready at the time of release.
+
+There's currently no easy, transparent way to request documentation for enhancements and to visualize documentation progress.
+Requests and communication regarding docs are drowned out in huge comment streams in enhancement issues, where people ping and mention the docs team for general feedback, docs-related questions, inquiries and UI string translations.
+
+=== Tracking progress
+
+The current modus operandi at {company} seems to be to not link issues and branches/PRs but only associate them using Github mentions.
+Mentions appear in the activity feed while linked resources are shown in a dedicated UI panel.
+// TODO go one here
+It's unnecessarily hard to see which branches and PRs relate to an issue and vice versa.
+In both cases, that involves scanning a usually fairly long activity feed
+
+== UI string translation
+
+UI strings are managed in the web-based localization tool WTI.
+There, devs usually generate or update the key-value pairs for UI strings in our US-English source locale.
+Afterward, they usually ping us to inform us of _every single bloody key_ they created or updated.
+Due to the way WTI handles the translation process and our own internal processes, every single change in every single WTI project needs to be communicated manually by a dev to a member of the docs team.
+How that happens is currently wildly unregulated, so devs:
+
+* grab us at lunch
+* send DMs
+* ping us in the tech writing channel on Slack
+* ping us in the issue channel on Slack
+* ping us in the GitHub issue
+* send a magical carrier pigeon with an encoded message, that materializes out of thin air when the stars align
+
+Tracking these requests is tricky.
+When a UI translation request is tied to an enhancement, the current approach is to work on that only after the closing meeting for that enhancement.
+The rationale is that the strings might change in the dev phase.
+However, devs usually announce the new keys when they implemented them, which is _before_ the closing meeting, which may trigger pointless notifications for all docs team members, who then have to keep track of the request somehow until after the closing meeting.
+
+Ironically, the pure translation effort for UI strings for a competent translator is usually negligible, _especially_ for a translator that's working on the underlying issue already in their role as a tech writer.
+The roles complement each other perfectly.
+What eats up time both for devs the docs team is usually an unholy alliance of communication overhead, monitoring overhead and having to handle UI strings in a subpar translation tool.
+
+== Non-enhancement issues
+
+
+
+
