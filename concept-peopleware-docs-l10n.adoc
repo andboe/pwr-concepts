@@ -1,3 +1,4 @@
+include::_notes.adoc[]
 = Technical writing at {company}
 :author: Andreas Böttcher
 :email: andreas.boettcher@peopleware.com
@@ -19,7 +20,7 @@ Tech Writing at {company} currently encompasses, among other things, the followi
 * Maintain authoring guidelines and style guides
 * Manage and maintain Jekyll SSG
 
-In this document, I will outline why I think the processes and tools we currently use to serve these tasks are no longer up to the task, affecting our readiness to provide timely, high-quality documentation and translations.
+In this document, I will outline why I think the processes and tools we currently use to serve these tasks are no longer appropriate, affecting our readiness to provide timely, high-quality documentation and translations.
 I will outline an ecosystem of tools and the respective processes to tackle this.
 The goal is to achieve a state where the Technical Writing department can fulfill all their tasks efficiently, with high quality and at scale.
 
@@ -75,9 +76,13 @@ Changes and requests only available as PRs are not tracked on the board. For big
 
 == Challenges and Pain Points
 
+I am convinced the docs team at {company} gets bogged down by inefficient processes as well as inadequate and unergonomic tools, affecting both documentation and translation workflows.
+
+
 === Documentation
 
 include::pain-markdown.adoc[leveloffset=+3]
 include::pain-repo-bloat.adoc[leveloffset=+3]
 include::pain-project-management.adoc[leveloffset=+3]
 
+include::_notes.adoc[]

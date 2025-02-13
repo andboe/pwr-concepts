@@ -1,0 +1,54 @@
+== Translation
+
+=== Processes
+
+Despite efforts to automate the translation process, translation still takes up an undue amount of tech writing capacity.
+This will eventually impact our readiness to create timely, high-quality end-user documentation.
+Translation process automation is an indispensable part of any modern translation workflow.
+This includes both process step automation as well as employing neural machine translation and LLM capabilities.
+Making the most of these capabilities requires careful planning, proper translation data management and robust language QA.
+In this document I explain why I think the current localisation approach is flawed, not future-proof and uneconomical in the long run.
+
+I think our current translation strategy will not yield the desired results and that process and tool adjustments are necessary to ensure tech writing capacity is
+Challenges and Pain Points
+
+=== Challenges and Pain Points
+
+I don't think it will be possible to omit post-editing from our l10n workflows for the foreseeable future.
+Let me explain why:
+...
+
+// ridiculous "overhead-to-actual-translation-work" ratio. we fuck around with translation PRs, TM-generation PRs, what is basically MANUAL file AND line AND string matching in github for these PRs for every documentation PR, no matter how small. this is ridiculous. We spend 5 times more on tracking, reviewing, fixing, approving and aligning about the PRs than we would doing actual translation work. Just fixing a fucking typo somewhere currently generates 11 (!!!!) PRs, all of which need to be reviewed and fixed manually.
+
+
+
+
+
+
+
+As company strongly tied to international markets, InVision needs robust internationalization (i18n) and localization (l10n) strategies to ensure content is delivered in all relevant locales:
+On time
+With the required quality
+Cost-efficiently
+To that end, a new localization strategy was started mid-2024. The goal of that strategy is to achieve fully automate the translation process
+
+
+
+
+
+
+NOTES:
+
+* TM granularity: reduce segment size to reduce effects of changes in source material to target (ex: adding a comma triggers retranslation of a full paragraph)
+
+* Missing from the tech writing tech stack:
+** Authoring support:
+*** Spell checker
+*** Grammar checker
+*** Prose linter
+*** On-the-fly link checker
+*** Auto-complete
+
+* Generally, tasks for modern translation workflows have “shifted left”. MT/LLM can support linguists in the actual translation generation phase, which allows them to focus more on data tasks such as ensuring clean TMs, meta data application, process improvement etc
+
+* The whole tool stack and process setup is
